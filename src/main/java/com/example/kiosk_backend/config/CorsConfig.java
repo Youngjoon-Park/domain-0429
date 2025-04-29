@@ -13,10 +13,16 @@ public class CorsConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**")
-                        .allowedOrigins("http://localhost:5173")
-                        .allowedMethods("*")
-                        .allowCredentials(true); // ✅ 세션 유지용 쿠키 허용
+                registry.addMapping("/**")
+                        .allowedOrigins(
+                                "http://localhost:5173", // 로컬 개발 환경
+                                "http://kiosktest.shop", // 도메인 주소로 변경
+                                "https://kiosktest.shop", // 도메인 주소로 변경
+                                "http://3.38.6.220:8081" // ✅ 추가!!
+                )
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
+                        .allowedHeaders("*")
+                        .allowCredentials(true);
             }
         };
     }

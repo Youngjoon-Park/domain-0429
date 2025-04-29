@@ -49,7 +49,7 @@ class TestControllerTest {
     public void getAllMembers() throws Exception {
         // given
         final String url = "/test";
-        Member savedMember = memberRepository.save(new Member(1L, "홍길동"));
+        Member savedMember = memberRepository.save(new Member("홍길동"));
 
         // when
         final ResultActions result = mockMvc.perform(get(url) // 1
